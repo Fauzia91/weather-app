@@ -8,20 +8,41 @@ var cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || []
 var historyEl = document.querySelector("#history")
 
 function renderHistory() {
-    var createButton = document.createElement('button')
-    createButton.innerText= 'History'
-    document.body.appendChild(createButton);
+    let cityHistory = JSON.parse(localStorage.getItem("cityHistory"));
+ 
+    console.log("cityHistory:", cityHistory)
+   
 
+    cityHistory.map(city =>{
+
+        var createButton = document.createElement('button')
+        createButton.innerText= city;
+        createButton.addEventListener("click", function(e){
+            //New york County
+            currentWeather(e.target.textContent) //i am passing a city
+
+        })
+        
+
+        historyEl.appendChild(createButton);
+    })
     //console.log(cityHistory)
-    for(let i= 0; i < cityHistory.length ; i++){
-        console.log(cityHistory[i])
-    }
+    // for(let i= 0; i < cityHistory.length ; i++){
+    //     console.log(cityHistory[i])
+    // }
 }
 //http://api.openweathermap.org/geo/1.0/direct?q=new+york&appid=0c99b416b34685d632710484332adc13
 //?key=value&key=value
 renderHistory()
-function currentWeather(){
-var city = inputEl.value;
+function currentWeather(city = null){ 
+    //search button doesn't give us a city
+    // there fore city is null
+    //thus get it from the input field
+    console.log("what is my city", city)
+    if(city == null){
+        city = inputEl.value; //get value from the input form
+    }
+
 console.log ("q:",city)
 query = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
 
@@ -46,6 +67,12 @@ fetch(query)
     var searchedCity = data[0].name
     cityHistory.push(searchedCity)
     localStorage.setItem("cityHistory", JSON.stringify(cityHistory))
+    
+    
+    renderHistory();
+    
+    
+    
     console.log( data)
     //fetch current weather
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)

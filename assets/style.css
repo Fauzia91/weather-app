@@ -15,6 +15,7 @@ h2 {
 
 #inputSearch {
     border-color: #3d4754;
+    width: 80%;
 }
 
 #searchBtn {
@@ -38,4 +39,21 @@ h2 {
 }
 #mainContainer{
     display: flex;
+}
+#searchBtn{
+    margin-top: 10px;
+}
+.left{
+    width :20%;
+}
+.right {
+    width: 80%;
+    padding: 20px;
+}
+#history{
+    display: flex;
+    flex-direction: column;
+}
+#history button{
+    margin-bottom: 10px;
 }
