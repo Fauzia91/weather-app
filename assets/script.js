@@ -9,7 +9,10 @@ var historyEl = document.querySelector("#history")
 
 function renderHistory() {
     let cityHistory = JSON.parse(localStorage.getItem("cityHistory"));
- 
+
+    if (!cityHistory) {
+        cityHistory = []
+    }
     console.log("cityHistory:", cityHistory)
    
 
@@ -34,14 +37,13 @@ function renderHistory() {
 //http://api.openweathermap.org/geo/1.0/direct?q=new+york&appid=0c99b416b34685d632710484332adc13
 //?key=value&key=value
 renderHistory()
-function currentWeather(city = null){ 
-    //search button doesn't give us a city
-    // there fore city is null
-    //thus get it from the input field
-    console.log("what is my city", city)
-    if(city == null){
-        city = inputEl.value; //get value from the input form
-    }
+function currentWeather(searchHistoryValue) {
+     city = inputEl.value; 
+     if (typeof searchHistoryValue ===
+        'string') {
+            city = searchHistoryValue;
+        } 
+    
 
 console.log ("q:",city)
 query = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
