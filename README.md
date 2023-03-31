@@ -4,8 +4,8 @@
 
 A weather dashboard created using the Weather Api to help you plan your next trip. With the help of the API you can now retrieve current weather information as well as a 5 day forecast in desired cities nationwide.
 
+<img width="1431" alt="weather-app" src="https://user-images.githubusercontent.com/123041731/228997264-171c14d4-ea6f-47af-abe4-78ba5635164c.png">
     
-
 ### Table of Contents
 ***
 
