@@ -8,6 +8,7 @@ var cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || []
 var historyEl = document.querySelector("#history")
 
 function renderHistory() {
+    historyEl.innerHTML = '';
     let cityHistory = JSON.parse(localStorage.getItem("cityHistory"));
 
     if (!cityHistory) {
