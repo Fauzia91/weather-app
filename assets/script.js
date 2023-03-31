@@ -68,12 +68,13 @@ fetch(query)
     let lat = data[0].lat;
     let lon = data[0].lon;
     var searchedCity = data[0].name
+    if (typeof searchHistoryValue !=='string') {
     cityHistory.push(searchedCity)
     localStorage.setItem("cityHistory", JSON.stringify(cityHistory))
     
     
     renderHistory();
-    
+        }
     
     
     console.log( data)
@@ -115,6 +116,7 @@ fetch(query)
         .then(data => {
                 console.log("fiveday:",data.list[0])
                 let fiveDayEl = document.querySelector("#fiveDayContainer");
+                fiveDayEl.innerHTML = '';
 
                 for(let i= 0; i < 5 ; i++){
                     console.log( data.list[(i * 8)] );//0,8,16,24,32
