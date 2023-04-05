@@ -47,7 +47,7 @@ function currentWeather(searchHistoryValue) {
     
 
 console.log ("q:",city)
-query = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
+query = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
 
 
 
